@@ -9,12 +9,29 @@ class Crud extends Connect {
     public $phone_number;
     public $date;
 
-    public function get_numbers(){
-        $sql = "SELECT * FROM numbers ORDER BY id DESC";
-        $query = $this->db->query($sql);
+    // public function get_numbers(){
+    //     $sql = "SELECT * FROM numbers ORDER BY id DESC";
+    //     $query = $this->db->query($sql);
+    //     $query->execute();
+    //     return $query->fetchAll(); //return statement for checking if true or false 
+    // }
+
+    public function get_numbers($date){
+        $sql = "SELECT * FROM numbers WHERE date >= :date ORDER BY id DESC";
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':date', $date);
         $query->execute();
         return $query->fetchAll(); //return statement for checking if true or false 
     }
+
+    // public function get_numbers($date){
+    //     $sql = "SELECT * FROM numbers WHERE date >= :date ORDER BY id DESC";
+    //     $query = $this->db->prepare($sql);
+    //     $query->bindValue(':date', $date); // Bind the :date placeholder with the value
+    //     $query->execute();
+    //     return $query->fetchAll(); // Return the result set as an array
+    // }
+    
 
     public function insert() {
         $sql = "INSERT INTO numbers SET 

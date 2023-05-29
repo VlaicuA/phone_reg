@@ -30,7 +30,9 @@ $date = $_GET['date'];
 
 echo $date;
 
-$show_reg = $show_entries->get_numbers();
+// $show_reg = $show_entries->get_numbers();
+
+$show_reg = $show_entries->get_numbers($_GET['date']);
 
 foreach ($show_reg as $row) {
     echo "<form action=delete_id.php method='GET'";
