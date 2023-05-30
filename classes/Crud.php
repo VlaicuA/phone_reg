@@ -61,12 +61,13 @@ class Crud extends Connect {
         return $query->execute(); //return statement for checking if true or false 
     }
 
-    //delete based on a date ?
+    //delete entries older than 'x' months
 
-    public function delete_date($input_date){
-        $sql = "DELETE FROM numbers WERE date < :input_date";
+    public function delete_date(){
+        $input_date = date('Y-m-d', strtotime('-3 months'));
+        $sql = "DELETE FROM numbers WHERE date < :input_date";
         $query = $this->db->prepare($sql);
-        $query->bindParam(':date', $input_date);
+        $query->bindParam(':input_date', $input_date);
         return $query->execute();
     }
 
