@@ -24,14 +24,6 @@ class Crud extends Connect {
         return $query->fetchAll(); //return statement for checking if true or false 
     }
 
-    // public function get_numbers($date){
-    //     $sql = "SELECT * FROM numbers WHERE date >= :date ORDER BY id DESC";
-    //     $query = $this->db->prepare($sql);
-    //     $query->bindValue(':date', $date); // Bind the :date placeholder with the value
-    //     $query->execute();
-    //     return $query->fetchAll(); // Return the result set as an array
-    // }
-    
 
     public function insert() {
         $sql = "INSERT INTO numbers SET 
@@ -46,7 +38,7 @@ class Crud extends Connect {
         $query->bindParam(':phone_number', $this->phone_number);
         return $query->execute(); //return statement for checking if true or false 
     }
-// update method, not sure I will implement it
+// update method, not sure it is useful. 
     public function update($id){
         $sql = "UPDATE numbers SET
         name = :name, 
