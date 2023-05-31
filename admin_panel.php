@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +22,11 @@
         <input type="search" name="search" id="search">
         <input type="submit" value="Cauta">
     </form>
+    <br>
+    <form action="delete_old.php" method="get">
+        <label for="clear DB"></label>
+        <input type="submit" name="delete_old" id="delete_old" value="Curata date > 14 zile">
+    </form>
 </body>
 </html>
 
@@ -30,6 +34,11 @@
 <?php
 require_once 'classes/Crud.php';
 require_once 'classes/Search.php';
+
+if (isset($_SESSION['delete_old_date_mess'])){
+    echo $_SESSION['delete_old_date_mess'];
+    unset($_SESSION['delete_old_date_mess']);
+}
 
 $show_entries = new Crud;
 $show_sentries = new Search;
