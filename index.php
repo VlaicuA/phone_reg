@@ -31,7 +31,7 @@ if (isset($_SESSION['insert_message'])){
     <title>Document</title>
 </head>
 <body>
-    <a href="admin_panel.php">Admin</a>
+    <a href="login.php">Admin</a>
     <form action="insert_form.php" method="post">
         <label for="name">Nume:</label>
         <input type="text" name="name" id="name" required> <br>

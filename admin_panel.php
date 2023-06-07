@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (isset($_SESSION['log_in_status']) && $_SESSION['log_in_status'] === true) {
+    echo 'Conectat cu succes';
+} else {
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -85,5 +91,14 @@ if(!empty($_GET['date'])){
             } 
             } else  echo 'Nu exista inregistrari cu o data egala sau mai mare decat data selectata';
         } 
+
+
+        
+// register_shutdown_function('clear_session');
+
+// function clear_session() {
+//     session_unset();
+//     session_destroy();
+// }
 
 ?>

@@ -16,6 +16,10 @@ class Crud extends Connect {
     //     return $query->fetchAll(); //return statement for checking if true or false 
     // }
 
+/**
+ * Method for display the entries
+ * @param string $sel_date; 
+ */
     public function get_numbers($sel_date){
         $sql = "SELECT * FROM numbers WHERE date >= :sel_date ORDER BY id DESC";
         $query = $this->db->prepare($sql);
@@ -26,7 +30,7 @@ class Crud extends Connect {
 
 
     public function insert() {
-        $this->name = strtoupper(trim($this->name));
+        $this->name = trim($this->name);
         $this->call_nr = strtoupper(trim($this->call_nr));
         $this->truck_number = strtoupper(trim($this->truck_number));
         $this->phone_number = strtoupper(trim($this->phone_number));
