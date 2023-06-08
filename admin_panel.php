@@ -29,17 +29,17 @@ require_once 'classes/Search.php';
         <section class="top_section">
         <form action="delete_old.php" method="get">
         <label for="clear DB"></label>
-        <input type="submit" name="delete_old" id="delete_old" value="Curata date > 14 zile">
+        <input type="submit" name="delete_old" id="delete_old" value="Sterge date > 14 zile">
     </form>
     <br>
     <form action="" method="get">
-        <label for="search">Search</label>
+        <label for="search">Cautare</label>
         <input type="search" name="search" id="search">
         <input type="submit" value="Cauta">
     </form>
     <br>
     <form action="" method="get">
-        <label for="date">Date</label>
+        <label for="date">Data</label>
         <input type="date" name="date" id="date" value="<?php echo date('Y-m-d', strtotime('-1 day')); ?>">
         <input type="submit" value="Arata">
     </form>
@@ -69,7 +69,7 @@ $show_sentries = new Search;
 <p class="name_row"><b>Nume</b></p>
 <p class="truck_row"><b>Numar</b></p>
 <p class="phone_row"><b>Telefon</b></p>
-<p class="delete_row"><b>Delete</b></p>
+<p class="delete_row"><b>Sterge</b></p>
 </div>
 <hr>
 
@@ -92,7 +92,7 @@ if(!empty($_GET['date'])){
             echo '<p class="name_row">'.$row['name'].'</p>';
             echo '<p class="truck_row">'.$row['truck_number'].'</p>';
             echo '<p class="phone_row">'.$row['phone_number'].'</p>';
-            echo '<p class="delete_row">'."<a href='delete_id.php?id=".$row['id']."'>Delete</a> <br>".'</p>';
+            echo '<p class="delete_row">'."<a href='delete_id.php?id=".$row['id']."'>Sterge</a> <br>".'</p>';
             echo '</div>';
             echo '<hr>';
         } 
