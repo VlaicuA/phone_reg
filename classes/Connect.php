@@ -5,7 +5,7 @@ class Connect {
     private $db_host = 'localhost';
     private $db_user = 'root';
     private $db_pass = 'root';
-    private $db_dbname = 'phone_reg_sil'; //need to set it up, build an if not present 
+    private $db_dbname = 'phone_reg_sil '; //need to set it up, build one if not present 
     protected $db;
 
     public function __construct(){

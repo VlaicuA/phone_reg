@@ -11,7 +11,7 @@ $crud->phone_number = $_POST['phone_number'];
 // $crud->insert();
 
 if($crud->insert()){
-    $_SESSION['insert_message'] = 'Inserat cu succes';
+    $_SESSION['insert_message'] = 'Inregistrat cu succes';
 } else {
     $_SESSION['insert_message'] = 'Eroare';
 }

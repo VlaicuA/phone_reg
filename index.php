@@ -14,10 +14,6 @@ $crud->insert();
 */
 // print_r($crud->get_numbers());
 
-if (isset($_SESSION['insert_message'])){
-    echo $_SESSION['insert_message'];
-    unset($_SESSION['insert_message']);
-}
 
 
 ?>
@@ -28,21 +24,32 @@ if (isset($_SESSION['insert_message'])){
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <link rel="stylesheet" href="./style/style_index.css">
+    <title>Inregistrare</title>
 </head>
 <body>
-    <a href="login.php">Admin</a>
+    <div class="main_div">
     <form action="insert_form.php" method="post">
-        <label for="name">Nume:</label>
-        <input type="text" name="name" id="name" required> <br>
-        <label for="call_nr">Nr. chemare:</label>
-        <input type="text" name="call_nr" id="call_nr" required> <br>
-        <label for="truck_number">Nr. Inmatriculare:</label>
-        <input type="text" name="truck_number" id="truck_number" required><br>
-        <label for="phone_number">Nr. Telefon</label>
-        <input type="text" name="phone_number" id="phone_number"> <br>
-        <input type="submit" value="Inregistreaza">
+        <div class="form_div">
+        <a href="login.php">Admin</a>
+            <h1>Inregistrare</h3>
+        <label for="name"></label>
+        <p><input type="text" name="name" id="name" required placeholder="Nume" maxlength="18"></p>
+        <label for="call_nr"></label>
+        <p><input type="text" name="call_nr" id="call_nr" required placeholder="Numar chemare" maxlength="5"></p>
+        <label for="truck_number"></label>
+        <p><input type="text" name="truck_number" id="truck_number" required placeholder="Numar inmatriculare" maxlength="16"></p>
+        <label for="phone_number"></label>
+        <p><input type="text" name="phone_number" id="phone_number" placeholder="Numar telefon" required maxlength="12"></p>
+        <p class="input_para"><input class="input_button" type="submit" value="Inregistreaza"></p>
+        <p class="insert_message"><?php 
+                if (isset($_SESSION['insert_message'])){
+                    echo $_SESSION['insert_message'];
+                    unset($_SESSION['insert_message']);
+                    }
+        ?></p>
+        </div>
     </form>
-    
+    </div>
 </body>
 </html>
