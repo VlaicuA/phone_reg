@@ -5,7 +5,7 @@ class Connect {
     private $db_host = 'localhost';
     private $db_user = 'root';
     private $db_pass = 'root';
-    private $db_dbname = 'phone_reg_sil '; //need to set it up, build one if not present 
+    private $db_dbname ='phone_reg_sil'; //need to set it up, build one if not present 
     protected $db;
 
     public function __construct(){
@@ -32,9 +32,10 @@ class Connect {
                 $createDatabaseQuery = "CREATE DATABASE $this->db_dbname CHARACTER SET $char_set COLLATE $collation";
                 $this->db->exec($createDatabaseQuery);
                 echo "Database created successfully.";
-            } else {
-                echo "";
-            }
+            } 
+            // else {
+            //     echo "Error on db connection";
+            // }
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }

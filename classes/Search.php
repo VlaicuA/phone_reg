@@ -13,7 +13,7 @@ class Search extends Connect{
     // }
 
     //build with ChatGPT starting from the other method
-    public function search($src){
+    public function call_search($src){
         $sql = "SELECT *, CASE WHEN call_nr LIKE :src THEN 1
                              WHEN call_nr LIKE CONCAT('%', :src) THEN 2
                              WHEN call_nr LIKE CONCAT(:src, '%') THEN 3

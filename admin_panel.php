@@ -7,6 +7,9 @@ if (isset($_SESSION['log_in_status']) && $_SESSION['log_in_status'] === true) {
     exit();
 }
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'classes/Crud.php';
 require_once 'classes/Search.php';
 
@@ -83,7 +86,6 @@ if(!empty($_GET['date'])){
     if(!empty($show_reg)){
 
         foreach ($show_reg as $row) {
-            //echo '<div class="display_div">';
             echo "<form action=delete_id.php method='GET'" .'<br>';
             echo '<div class="display_div">';
             echo '<p style="display: hidden" class="id_row"'.$row['id'] . '</p>';
@@ -102,22 +104,24 @@ if(!empty($_GET['date'])){
 
     if(!empty($_GET['search'])){
 
-        $show_sreg = $show_sentries->search($_GET['search']);
+        $show_sreg = $show_sentries->call_search($_GET['search']);
     
         if(!empty($show_sreg)){
     
             foreach ($show_sreg as $row) {
-                echo "<form action=delete_id.php method='GET'";
-                echo '<p style="display: hidden"'.$row['id'] . '</p>';
-                echo '<h4>'.$row['call_nr'].'</h4>';
-                echo '<p>'.$row['date'].'</p>';
-                echo '<p>'.$row['name'].'</p>';
-                echo '<p>'.$row['truck_number'].'</p>';
-                echo '<p>'.$row['phone_number'].'</p>';
-                echo "<a href='delete_id.php?id=".$row['id']."'>Delete</a> <br>";
+                echo "<form action=delete_id.php method='GET'" .'<br>';
+                echo '<div class="display_div">';
+                echo '<p style="display: hidden" class="id_row"'.$row['id'] . '</p>';
+                echo '<p class="call_row">'.$row['call_nr'].'</p>';
+                echo '<p class="date_row">'.$row['date'].'</p>';
+                echo '<p class="name_row">'.$row['name'].'</p>';
+                echo '<p class="truck_row">'.$row['truck_number'].'</p>';
+                echo '<p class="phone_row">'.$row['phone_number'].'</p>';
+                echo '<p class="delete_row">'."<a href='delete_id.php?id=".$row['id']."'>Sterge</a> <br>".'</p>';
+                echo '</div>';
                 echo '<hr>';
             } 
-            } else  echo 'Nu exista inregistrari cu o data egala sau mai mare decat data selectata';
+            } else  echo 'Nu exista inregistrari aferente datelor introduse';
         } 
 
 
